@@ -12,3 +12,10 @@ Script to get position and quaternion information of a source frame w.r.t. a tar
 Usage: `rosrun arco_ros_utils_py tf_echo <target_frame> <source_frame>`
 
 Hints: target_P = RotMatrix(q_from_tf_echo) * source_P
+
+Repos:
+
+## arco_ros_utils_kalibr
+
+### \_template_uvc_realsense
+Template to calibrate a Realsense D435 and a UVC device.
