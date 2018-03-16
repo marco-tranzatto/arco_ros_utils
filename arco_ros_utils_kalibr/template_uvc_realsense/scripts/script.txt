@@ -48,32 +48,15 @@ References:
     --cam ./out/uvc_up_camchain.yaml
     b.	copy output from current directory to ./out/maplab_config_upwards.yaml
 
-# ================================== Calibration between UVC front camera and IR camera of realsense does NOT work ==========
-# JUMP THIS PART FOR NOW!!!
-# [ERROR] [1521109810.702160]: Did not converge in maxIterations... restarting...
-# [ WARN] [1521109810.707934]: Optimization diverged possibly due to a bad initialization. (Do the models fit the lenses well?)
-# [ERROR] [1521109810.711571]: Max. attemps reached... Giving up...
-
-7. [As Step 3, but with forward UVC camera && forward Realsense (after disabling projected path).] FIX ME!!!
-   Make sure the whole calibration board is seen @ the beginning - Used as main camera for ROVIOLI.
+7. As Step 3, but with forward UVC camera && forward Realsense (after disabling projected path).
+   Make sure the whole calibration board is seen @ the beginning - Used to calibrate UVC front camera & IR front camera of realsense.
    WARNING: choose the IR camera that has the same frame origin of the depth sensor!
-	a. kalibr_calibrate_cameras --target ./parameter_files/april_6x6.yaml --bag ./bags/front_uvc_realsense_cameras_calibration.bag --models pinhole-equi pinhole-equi --topics /uvc_camera/cam_1/image_raw_throttle /realsense/infra1/image_rect_raw_throttle
+	a. kalibr_calibrate_cameras --target ./parameter_files/april_6x6.yaml --bag ./bags/front_uvc_realsense_cameras_calibration.bag --models pinhole-equi pinhole-equi --topics /uvc_camera/cam_1/image_raw_throttle /realsense/infra1/image_rect_raw_throttle # in case
+    # of errors try (1) to use option '--show' to check that the apriltags are correctly detected, (2) if you have timing issues 
+    # (e.g. a big difference in time stampes between the two topics) try to use '----approx-sync' with a number slightly bigger
+    # than the time difference between the two timestamps.
 	b.	copy output from current directory to ./out/camcam_front.yaml
 	c. WARNING: **remove in case the 'throttle' string the the rostopic field of the yaml file!**.
-# ==================================== End Jumped Part =======================================================================
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Temporary Hacky Part ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-7a. Forward Realsense colored camera calibration.
-    a. kalibr_calibrate_cameras --target ./parameter_files/april_6x6.yaml --bag ./bags/front_realsense_colored_camera_calibration.bag --models pinhole-equi --topics /realsense/color/image_raw_throttle
-    b. copy output from current directory to ./out/realsense_front_colored_cam.yaml
-    c. **remove in case the 'throttle' string the the rostopic field**.
-
-7b. Forward Realsense colored camera - UVC's IMU Calibration.
-    a. update parameter_files/imu_adis16448 with IMU topic and frequency.
-    b. rosrun kalibr kalibr_calibrate_imu_camera --cam ./out/realsense_front_colored_cam.yaml  --target ./parameter_files/april_6x6.yaml --imu ./parameter_files/imu_adis16448.yaml --bag ./bags/front_realsense_colored_camera_imu.bag --time-calibration #use time-calibration to check time difference between camera and imu
-    c. copy output to ./out/realsense_front_colored_robotimu_camcahin.yaml
-    d.  copy report to ./out/report/realsense_front_colored_robotimu_camcahin.pdf
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ End Temporary Hacky Part ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 8. Forward UVC camera calibration (after disabling realsense projected path).
     a. kalibr_calibrate_cameras --target ./parameter_files/april_6x6.yaml --bag ./bags/front_uvc_realsense_cameras_calibration.bag --models pinhole-equi --topics /uvc_camera/cam_1/image_raw_throttle

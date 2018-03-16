@@ -1,0 +1,16 @@
+function outputString = transformation2static_transform_publisher(T_target_source, targetFrameName, sourceFrameName)
+%transformation2static_transform_publisher Converts a transformation matrix to a ROS static transform publisher.
+
+target_R_target_source = T_target_source(1:3,4);
+Rot_traget_source = T_target_source(1:3,1:3);
+
+outputString=['<node pkg="tf" type="static_transform_publisher"' ...
+                ' name="%s_%s_broadcaster"' ...
+                ' args="%.3f %.3f %.3f %.6f %.6f %.6f %.6f' ...
+                ' %s %s 100" /> \n'];
+            
+fprintf(outputString, ...
+        targetFrameName, sourceFrameName, ...
+        );
+end
+
