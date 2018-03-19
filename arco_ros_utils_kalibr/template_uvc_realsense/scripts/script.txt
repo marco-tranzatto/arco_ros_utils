@@ -7,29 +7,29 @@ References:
 1. Source kalibr workspace
 
 2. Bags creation.
-    a. record 6 bags: 
-        (1) front UVC camera, front realsense IR1&IR2 (REMBER to deactivate path projection!!!) with cameras at 4Hz (throttled topic), move only target [1];
+    a. record the following bags bags: 
+        (1) front UVC camera with cameras at 4Hz (throttled topic), move only target [1];
         (2) upwards UVC camera at 4 Hz (throttled topic) (REMBER to deactivate path projection from realsense!!!), move only target [1];
         (3) front UVC camera, UVC IMU (REMBER to deactivate path projection!!!), Robot's IMU,  with cameras NOT throttled, move device [2];
         (4) upwards UVC camera, UVC IMU (REMBER to deactivate path projection!!!), Robot's IMU, with cameras NOT throttled, move device [2];
-        (5) [temporary hack] front colored camera of realsense, with cameras throttled, move only target [1];
-        (6) [temporary hack] front colored camera of realsense, UVC's IMU, with cameras NOT throttled, move device [2];
+        (5) front IR (1) camera of realsense, with cameras throttled, move only target [1];
+        (6) front IR (1) camera of realsense, UVC's IMU, with cameras NOT throttled, move device [2];
 
     b. create symbolic links to these bags in "bags" sub-folder:
-        (1) front_uvc_realsense_cameras_calibration.bag
+        (1) front_uvc_camera_calibration.bag
         (2) upward_uvc_cameras_calibration.bag
         (3) front_uvc_camera_imu.bag
         (4) upward_uvc_camera_imu.bag
-        (5) front_realsense_colored_camera_calibration.bag
-        (6) front_realsense_colored_camera_imu.bag
+        (5) front_realsense_ir_camera_calibration.bag
+        (6) front_realsense_ir_camera_imu.bag
 
 3. Upwards SINGLE Camera Calibration (intrinsics). 
    Make sure the whole calibration board is seen @ the beginning - Used as main camera for ROVIOLI
-    a. kalibr_calibrate_cameras --target ./parameter_files/april_6x6.yaml --bag ./bags/upward_uvc_cameras_calibration.bag --models pinhole-equi  --topics /uvc_camera/cam_0/image_raw_throttled
+    a. kalibr_calibrate_cameras --target ./parameter_files/april_6x6.yaml --bag ./bags/upward_uvc_cameras_calibration.bag --models pinhole-equi  --topics /uvc_camera/cam_0/image_raw_throttle
     b. copy output from current directory to ./out/uvc_up_cam.yaml
     c. WARNING: **remove in case the 'throttle' string the the rostopic field of the yaml file!**.
 
-4. TOCHECK Upwards UVC Camera - UVC IMU Calibration.
+4. Upwards UVC Camera - UVC IMU Calibration.
     a. update parameter_files/imu_adis16448 with IMU topic and frequency.
     b. rosrun kalibr kalibr_calibrate_imu_camera --cam ./out/uvc_up_cam.yaml  --target ./parameter_files/april_6x6.yaml --imu ./parameter_files/imu_adis16448.yaml --bag ./bags/upward_uvc_camera_imu.bag --time-calibration #use time-calibration to check time difference between camera and imu
     c. copy output to ./out/uvc_up_camchain.yaml
@@ -48,22 +48,27 @@ References:
     --cam ./out/uvc_up_camchain.yaml
     b.	copy output from current directory to ./out/maplab_config_upwards.yaml
 
-7. As Step 3, but with forward UVC camera && forward Realsense (after disabling projected path).
+7. Forward Realsense IR camera calibration (after disabling projected path).
    Make sure the whole calibration board is seen @ the beginning - Used to calibrate UVC front camera & IR front camera of realsense.
    WARNING: choose the IR camera that has the same frame origin of the depth sensor!
-	a. kalibr_calibrate_cameras --target ./parameter_files/april_6x6.yaml --bag ./bags/front_uvc_realsense_cameras_calibration.bag --models pinhole-equi pinhole-equi --topics /uvc_camera/cam_1/image_raw_throttle /realsense/infra1/image_rect_raw_throttle # in case
-    # of errors try (1) to use option '--show' to check that the apriltags are correctly detected, (2) if you have timing issues 
-    # (e.g. a big difference in time stampes between the two topics) try to use '----approx-sync' with a number slightly bigger
-    # than the time difference between the two timestamps.
-	b.	copy output from current directory to ./out/camcam_front.yaml
+	a. kalibr_calibrate_cameras --target ./parameter_files/april_6x6.yaml --bag ./bags/front_realsense_ir_camera_calibration.bag --models pinhole-equi --topics /realsense/infra1/image_rect_raw_throttle # in case
+    # of errors try (1) to use option '--show' to check that the apriltags are correctly detected
+	b.	copy output from current directory to ./out/realsense_ir_cam_front.yaml
 	c. WARNING: **remove in case the 'throttle' string the the rostopic field of the yaml file!**.
 
-8. Forward UVC camera calibration (after disabling realsense projected path).
-    a. kalibr_calibrate_cameras --target ./parameter_files/april_6x6.yaml --bag ./bags/front_uvc_realsense_cameras_calibration.bag --models pinhole-equi --topics /uvc_camera/cam_1/image_raw_throttle
+8. Forward Realsense IR Camera - UVC IMU Calibration.
+    a. update parameter_files/imu_adis16448 with IMU topic and frequency.
+    b. rosrun kalibr kalibr_calibrate_imu_camera --cam ./out/realsense_ir_cam_front.yaml  --target ./parameter_files/april_6x6.yaml --imu ./parameter_files/imu_adis16448.yaml --bag ./bags/front_realsense_ir_camera_imu.bag --time-calibration #use time-calibration to check time difference between camera and imu - IN CASE OF ERROR ADD '--timeoffset-padding 0.1'
+    c. copy output to ./out/realsense_ir_front_camchain.yaml
+    d.  copy report to ./out/report/realsense_ir_front_camchain.pdf
+    e. [optional] if you flipped the cameras, then add "flip_camera: true" after the field "timeshift_cam_imu".
+
+9. Forward UVC camera calibration (after disabling realsense projected path).
+    a. kalibr_calibrate_cameras --target ./parameter_files/april_6x6.yaml --bag ./bags/front_uvc_camera_calibration.bag --models pinhole-equi --topics /uvc_camera/cam_1/image_raw_throttle
     b. copy output from current directory to ./out/uvc_front_cam.yaml
     c. **remove in case the 'throttle' string the the rostopic field**.
 
-9. Forward UVC Camera - UVC IMU Calibration.
+10. Forward UVC Camera - UVC IMU Calibration.
     a. update parameter_files/imu_adis16448 with IMU topic and frequency.
     b. rosrun kalibr kalibr_calibrate_imu_camera --cam ./out/uvc_front_cam.yaml  --target ./parameter_files/april_6x6.yaml --imu ./parameter_files/imu_adis16448.yaml --bag ./bags/front_uvc_camera_imu.bag --time-calibration #use time-calibration to check time difference between camera and imu
     c. copy output to ./out/uvc_front_camchain.yaml
