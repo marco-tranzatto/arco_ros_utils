@@ -1,0 +1,24 @@
+<launch>
+  <!-- Parameters -->
+
+  <!-- UVC -->
+  <include file="$(find uvc_ros_driver)/launch/uvc_ros_driver.launch"/>
+
+  <!-- Throttling -->
+  <node name="topic_throttle_cam_0"
+        pkg="topic_tools" type="throttle"
+        args="messages
+              uvc_camera/cam_0/image_raw
+              4">
+    <param name="lazy" value="false"/>
+  </node>
+
+  <node name="topic_throttle_cam_1"
+        pkg="topic_tools" type="throttle"
+        args="messages
+              uvc_camera/cam_1/image_raw
+              4">
+    <param name="lazy" value="false"/>
+  </node>
+
+</launch>

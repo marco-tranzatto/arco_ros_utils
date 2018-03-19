@@ -1,0 +1,42 @@
+<launch>
+  <!-- Parameters -->
+  <arg name="namespace"          default="realsense"/>
+  <arg name="enable_fisheye"      default="true"/>
+  <arg name="enable_depth"        default="true"/>
+  <arg name="enable_infra1"       default="true"/>
+  <arg name="enable_infra2"       default="true"/>
+  <arg name="enable_color"        default="false"/>
+  <arg name="enable_pointcloud"   default="true"/>
+  <arg name="enable_sync"         default="true"/>
+  <arg name="align_depth"         default="true"/>
+
+  <!-- Realsense -->
+  <include file="$(find realsense_ros_camera)/launch/rs_rgbd.launch">
+    <arg name="namespace"                     value="$(arg namespace)"/>
+    <arg name="enable_fisheye"                value="$(arg enable_fisheye)"/>
+    <arg name="enable_depth"                  value="$(arg enable_depth)"/>
+    <arg name="enable_infra1"                 value="$(arg enable_infra1)"/>
+    <arg name="enable_infra2"                 value="$(arg enable_infra2)"/>
+    <arg name="enable_color"                  value="$(arg enable_color)"/>
+    <arg name="enable_pointcloud"             value="$(arg enable_pointcloud)"/>
+    <arg name="align_depth"                   value="$(arg align_depth)"/>
+  </include>
+
+  <!-- Throttling -->
+  <node name="topic_throttle_ir_1"
+        pkg="topic_tools" type="throttle"
+        args="messages
+              realsense/infra1/image_rect_raw
+              4">
+    <param name="lazy" value="false"/>
+  </node>
+
+  <node name="topic_throttle_ir_2"
+        pkg="topic_tools" type="throttle"
+        args="messages
+              realsense/infra2/image_rect_raw
+              4">
+    <param name="lazy" value="false"/>
+  </node>
+
+</launch>
