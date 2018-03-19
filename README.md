@@ -8,8 +8,11 @@ Folders:
 ### template_uvc_realsense
 Template to calibrate a Realsense D435 and a UVC device.
 
+## arco_ros_utils_launch
+Collection of launch files.
+
 ## arco_ros_utils_matlab
-Collection of Matlab scripts
+Collection of Matlab scripts.
 
 ### transformation2static_transform_publisher
 Converts a transformation matrix (T_parent_child = [RotMatrix, Position; 0, 0, 0, 1]) to a string that can be used in a launch file to create a ROS static 
@@ -29,3 +32,5 @@ Usage: `rosrun arco_ros_utils_py tf_echo <target_frame> <source_frame>`
 
 Hints: target_P = RotMatrix(q_from_tf_echo) * source_P
 
+## arco_ros_utils_record_scripts
+Collection of rosbag record scripts.
