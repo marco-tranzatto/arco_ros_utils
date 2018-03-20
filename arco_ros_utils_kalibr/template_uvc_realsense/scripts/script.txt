@@ -14,6 +14,7 @@ References:
         (4) upwards UVC camera, UVC IMU (REMBER to deactivate path projection!!!), Robot's IMU, with cameras NOT throttled, move device [2];
         (5) front IR (1) camera of realsense, with cameras throttled, move only target [1];
         (6) front IR (1) camera of realsense, UVC's IMU, with cameras NOT throttled, move device [2];
+        (7) upward UVC camera, UVC IMU, and Robot's IMU, with cameras NOT throttled, move Robot [2];
 
     b. create symbolic links to these bags in "bags" sub-folder:
         (1) front_uvc_camera_calibration.bag
@@ -22,6 +23,7 @@ References:
         (4) upward_uvc_camera_imu.bag
         (5) front_realsense_ir_camera_calibration.bag
         (6) front_realsense_ir_camera_imu.bag
+        (7) upward_uvc_camimu_robotimu.bag
 
 3. Upwards SINGLE Camera Calibration (intrinsics). 
    Make sure the whole calibration board is seen @ the beginning - Used as main camera for ROVIOLI
@@ -83,7 +85,7 @@ References:
 
 12.	Upwards Camera0-Robot's Imu calibration
     a. update parameter_files/imu_xsens_mti_100.yaml with Robot's IMU topic and frequency.
-    b. rosrun kalibr kalibr_calibrate_imu_camera --cam ./out/uvc_up_camcam.yaml --target ./parameter_files/april_6x6.yaml --imu ./parameter_files/imu_xsens_mti_100.yaml --bag ./bags/kalibr-up-uvc-2018-03-13-11-30-48.bag --time-calibration #use time-calibration to check time difference between camera imu and robot's imu - IN CASE OF ERROR ADD '--timeoffset-padding 0.1'
+    b. rosrun kalibr kalibr_calibrate_imu_camera --cam ./out/uvc_up_cam.yaml --target ./parameter_files/april_6x6.yaml --imu ./parameter_files/imu_xsens_mti_100.yaml --bag ./bags/upward_uvc_camimu_robotimu.bag --time-calibration #use time-calibration to check time difference between camera imu and robot's imu - IN CASE OF ERROR ADD '--timeoffset-padding 0.1'
     c. copy output to ./out/camchain_visensor_robotimu.yaml
 
 13. MSF Vision for Camera0 (Upwards)
