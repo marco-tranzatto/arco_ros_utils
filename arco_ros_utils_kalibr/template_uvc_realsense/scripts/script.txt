@@ -63,25 +63,31 @@ References:
     d.  copy report to ./out/report/realsense_ir_front_camchain.pdf
     e. [optional] if you flipped the cameras, then add "flip_camera: true" after the field "timeshift_cam_imu".
 
-9. Forward UVC camera calibration (after disabling realsense projected path).
+9. Maplab configuration file for UPWARDS cameras.
+    a. rosrun kalibr kalibr_maplab_config --to-ncamera \
+    --label upwards-config \
+    --cam ./out/uvc_up_camchain.yaml
+    b.  copy output from current directory to ./out/maplab_config_upwards.yaml
+
+10. Forward UVC camera calibration (after disabling realsense projected path).
     a. kalibr_calibrate_cameras --target ./parameter_files/april_6x6.yaml --bag ./bags/front_uvc_camera_calibration.bag --models pinhole-equi --topics /uvc_camera/cam_1/image_raw_throttle
     b. copy output from current directory to ./out/uvc_front_cam.yaml
     c. **remove in case the 'throttle' string the the rostopic field**.
 
-10. Forward UVC Camera - UVC IMU Calibration.
+11. Forward UVC Camera - UVC IMU Calibration.
     a. update parameter_files/imu_adis16448 with IMU topic and frequency.
     b. rosrun kalibr kalibr_calibrate_imu_camera --cam ./out/uvc_front_cam.yaml  --target ./parameter_files/april_6x6.yaml --imu ./parameter_files/imu_adis16448.yaml --bag ./bags/front_uvc_camera_imu.bag --time-calibration #use time-calibration to check time difference between camera and imu
     c. copy output to ./out/uvc_front_camchain.yaml
     d.  copy report to ./out/report/uvc_front_camchain.pdf
     e. [optional] if you flipped the cameras, then add "flip_camera: true" after the field "timeshift_cam_imu".
 
-11.	Upwards Camera0-Robot's Imu calibration
+12.	Upwards Camera0-Robot's Imu calibration
     a. update parameter_files/imu_xsens_mti_100.yaml with Robot's IMU topic and frequency.
     b. rosrun kalibr kalibr_calibrate_imu_camera --cam ./out/uvc_up_camcam.yaml --target ./parameter_files/april_6x6.yaml --imu ./parameter_files/imu_xsens_mti_100.yaml --bag ./bags/kalibr-up-uvc-2018-03-13-11-30-48.bag --time-calibration #use time-calibration to check time difference between camera imu and robot's imu - IN CASE OF ERROR ADD '--timeoffset-padding 0.1'
     c. copy output to ./out/camchain_visensor_robotimu.yaml
 
-12. MSF Vision for Camera0 (Upwards)
+13. MSF Vision for Camera0 (Upwards)
     a. rosrun kalibr kalibr_msf_config --viimu ./out/uvc_up_camchain.yaml --mavimu ./out/camchain_visensor_robotimu.yaml --out ./out/msf_parameters_vision.yaml
     b. remember in this file the frames are: I == Robot's IMU; C == Sensor's IMU.
 
-13. Update and run "tsif_external_pose_calibration".
+14. Update and run "anymal_external_pose_calibration".
