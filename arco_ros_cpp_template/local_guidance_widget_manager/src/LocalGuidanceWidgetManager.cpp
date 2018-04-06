@@ -1,5 +1,7 @@
 #include <local_guidance_widget_manager/LocalGuidanceWidgetManager.hpp>
 
+#include <message_logger/message_logger.hpp>
+
 namespace local_guidance_widget_manager {
 
 LocalGuidanceWidgetManager::LocalGuidanceWidgetManager(any_node::Node::NodeHandlePtr nodeHandle)
@@ -38,6 +40,10 @@ void LocalGuidanceWidgetManager::advertiseServers() {
 
   setDesiredPathToFollow_ =
       advertiseService("set_desired_path", "/default", &LocalGuidanceWidgetManager::setDesiredPathToFollow, this);
+
+  pFollowPathActionServer_.reset(
+      new FollowPathActionServerType(nh, any_node::param<std::string>(nh, "servers/follow_path/action", "follow_path"),
+                                     boost::bind(&LocalGuidanceRos::followPath, this, _1), false));
 }
 
 bool LocalGuidanceWidgetManager::setDesiredPathToFollow(std_srvs::Empty::Request& request,
