@@ -3,6 +3,11 @@ Collection of ROS utilis.
 
 Folders:
 
+## arco_ros_cpp_template
+
+### local_guidance_widget_manager
+ROS node C++ template with any_node, clang-tools, etc.
+
 ## arco_ros_utils_kalibr
 
 ### template_uvc_realsense
