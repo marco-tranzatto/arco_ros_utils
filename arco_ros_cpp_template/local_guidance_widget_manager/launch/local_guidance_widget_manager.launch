@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <!-- Default parameters -->
+  <arg name="default_ros_param_file"           value="$(find local_guidance_widget_manager)/config/parameters.yaml"/>
+
+  <!-- User's overlaying parameters, if not specified load default ones (yes, a second time) -->
+  <arg name="overlay_ros_param_file"           default="$(arg default_ros_param_file)"/>
+
+  <!-- Node-->
+  <node name="local_guidance_widget_manager" pkg="local_guidance_widget_manager" type="local_guidance_widget_manager"
+        output="screen" respawn="true">
+    <!-- Load default parameters -->
+    <rosparam command="load"                    file="$(arg default_ros_param_file)"/>
+
+    <!-- Overlay parameters if user specified them. They MUST be loaded after default parameters! -->
+    <rosparam command="load"                    file="$(arg overlay_ros_param_file)"/>
+  </node>
+
+</launch>

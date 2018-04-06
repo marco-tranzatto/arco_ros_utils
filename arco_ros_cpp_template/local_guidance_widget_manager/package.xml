@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>local_guidance_widget_manager</name>
+  <version>0.0.1</version>
+  <description>Manager of yhr GUI for the 'local_guidance' tool.</description>
+
+  <author email="marcot@ethz.ch">Marco Tranzatto</author>
+  <maintainer email="marcot@ethz.ch">Marco Tranzatto</maintainer>
+
+  <license>Proprietary</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>clang_tools</build_depend>
+
+  <depend>roscpp</depend>
+  <depend>any_node</depend>
+  <depend>std_srvs</depend>
+  <depend>path_creator_msgs</depend>
+</package>
