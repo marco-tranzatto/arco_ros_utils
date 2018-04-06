@@ -34,10 +34,9 @@ class LocalGuidanceWidgetManager : public any_node::Node {
    * @param response ROS service response
    * @return
    */
-  bool setDesiredPathToFollow(std_srvs::Empty::Request& request, std_srvs::Empty::Response& response);
+  bool setDesiredPathToFollow(std_srvs::Empty::Request& request,
+                              std_srvs::Empty::Response& response);
 
-  //! ros Nodehandle
-  ros::NodeHandle nodeHandle_;
   //! Rosservice to set a desired path to follow
   ros::ServiceServer setDesiredPathToFollow_;
 };

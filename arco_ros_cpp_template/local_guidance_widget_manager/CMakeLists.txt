@@ -17,8 +17,8 @@ find_package(catkin REQUIRED
   COMPONENTS
       roscpp
       any_node
+      message_logger
       std_srvs
-      path_creator_msgs
 )
 
 ###################################
@@ -36,8 +36,8 @@ catkin_package(
   #  LIBRARIES rqt_multilog_manager
   CATKIN_DEPENDS
       any_node
+      message_logger
       std_srvs
-      path_creator_msgs
   #  DEPENDS system_lib
 )
 

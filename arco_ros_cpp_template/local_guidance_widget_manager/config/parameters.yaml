@@ -1,4 +1,3 @@
 servers:
   set_desired_path:
     service: "set_desired_path" # Service name to set a desired path to be followed.
-    
