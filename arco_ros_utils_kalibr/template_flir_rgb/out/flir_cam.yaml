@@ -1,0 +1,9 @@
+cam0:
+  cam_overlaps: []
+  camera_model: pinhole
+  distortion_coeffs: [-0.03296527751484443, 0.04097100702363113, -0.07384725316720045,
+    0.04425672598228086]
+  distortion_model: equidistant
+  intrinsics: [859.3439686221952, 858.474721003607, 646.7408841989316, 523.7896653375846]
+  resolution: [1280, 1024]
+  rostopic: /pointgrey_spinnaker_driver/image_raw
