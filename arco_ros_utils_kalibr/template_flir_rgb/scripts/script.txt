@@ -1,0 +1,31 @@
+References: 
+    [1] https://github.com/ethz-asl/kalibr/wiki/multiple-camera-calibration
+    [2] https://github.com/ethz-asl/kalibr/wiki/camera-imu-calibration
+
+0. cd parent folder containing this script
+
+1. Source kalibr workspace
+
+2. Bags creation.
+    a. record the following bags bags: 
+        (1) RGB FLIR camera, Robot's IMU,  with cameras NOT throttled, move device [2];
+
+    b. create symbolic links to these bags in "bags" sub-folder:
+        (1) front_flir_camera_robot_imu.bag
+
+3. RGB FLIR Camera Calibration (intrinsics). 
+   Make sure the whole calibration board is seen @ the beginning
+    a. kalibr_calibrate_cameras --target ./parameter_files/april_6x6.yaml --bag ./bags/front_flir_camera_robot_imu.bag --models pinhole-equi  --topics /pointgrey_spinnaker_driver/image_raw
+    b. copy output from current directory to ./out/flir_cam.yaml
+    c. WARNING: **remove in case the 'throttle' string the the rostopic field of the yaml file!**.
+
+4. RGB FLIR Camera - Robot's IMU Calibration.
+    a. update parameter_files/imu_xsens_mti_100 with IMU topic and frequency.
+    b. rosrun kalibr kalibr_calibrate_imu_camera --cam ./out/flir_cam.yaml  --target ./parameter_files/april_6x6.yaml --imu ./parameter_files/imu_xsens_mti_100.yaml --bag ./bags/front_flir_camera_robot_imu.bag --time-calibration #use time-calibration to check time difference between camera and imu
+    c. copy output to ./out/flir_camchain.yaml
+    d. copy report to ./out/report/flir_camchain.pdf
+    e. [optional] if you flipped the cameras, then add "flip_camera: true" after the field "timeshift_cam_imu".
+
+5. Update and run "anymal_imu_flir_tf".
+
+6. Trick used to calibrate position of FLIR frame: add the TF static publisher generated at point 5 in "anymal_bear_description/debug.launch", launch "debug.launch" and use "rosrun tf tf_echo ORIGIN_FRAME_TELEOPHEAD FLIR_FRAME_GENERATED_BY_STATIC_TF" (example: rosrun tf tf_echo teleop_head flir_camera_calibrated_frame). Take Translation and RPY information and update in the URDF the transformation from "teleop_head" to the actual frame "teleop_head_flir_optical_frame".
