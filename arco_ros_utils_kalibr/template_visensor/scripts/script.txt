@@ -1,0 +1,27 @@
+References: 
+    [1] https://github.com/ethz-asl/kalibr/wiki/multiple-camera-calibration
+    [2] https://github.com/ethz-asl/kalibr/wiki/camera-imu-calibration
+
+0. cd parent folder containing this script
+
+1. Source kalibr workspace
+
+2. If you need to flip the cameras (BEFORE you record data for calibration) see https://github.com/ethz-asl/mav_tools/wiki/ViSensor-Fixing,-Flashing,-Etc.#how-to-flash-calibration-onto-the-sensor and flash example calibration file (which already has flipped camera).
+
+3. Bags creation.
+    a. record the following bags bags: 
+        (1) Cam0 & Ca1 camera, Visensor's IMU,  with cameras throttled, see [1];
+
+    b. create symbolic links to these bags in "bags" sub-folder:
+        (1) front_cameras_intrinsics.bag
+
+4. Cameras Calibration (intrinsics). 
+   Make sure the whole calibration board is seen @ the beginning
+    a. kalibr_calibrate_cameras --target ./parameter_files/april_6x6.yaml --bag ./bags/front_cameras_intrinsics.bag --models pinhole-equi pinhole-equi --topics /cam0/image_raw_throttle /cam1/image_raw_throttle
+    b. copy output from current directory to ./out/visensor_cam.yaml
+    c. WARNING: **remove in case the 'throttle' string the the rostopic field of the yaml file!**.
+
+
+
+  [TODO]  d. Use https://github.com/ethz-asl/mav_tools/wiki/ViSensor-Fixing,-Flashing,-Etc. to flash on visensor the new calibration.
+
