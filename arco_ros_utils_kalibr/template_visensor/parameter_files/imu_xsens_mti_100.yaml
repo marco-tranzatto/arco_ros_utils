@@ -1,0 +1,6 @@
+rostopic: /sensors/imu
+update_rate: 400.0 #Hz
+accelerometer_noise_density: 0.01 #continous - for now just use params from ADIS IMU, TOD update me!
+accelerometer_random_walk: 0.0002 # for now just use params from ADIS IMU, TOD update me!
+gyroscope_noise_density: 0.005 #continous - for now just use params from ADIS IMU, TOD update me!
+gyroscope_random_walk: 4.0e-06 # for now just use params from ADIS IMU, TOD update me!
