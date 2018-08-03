@@ -1,6 +1,7 @@
 References: 
     [1] https://github.com/ethz-asl/kalibr/wiki/multiple-camera-calibration
     [2] https://github.com/ethz-asl/kalibr/wiki/camera-imu-calibration
+    [3] https://github.com/ethz-asl/kalibr/wiki/Multi-IMU-and-IMU-intrinsic-calibration
 
 0. cd parent folder containing this script
 
@@ -10,18 +11,47 @@ References:
 
 3. Bags creation.
     a. record the following bags bags: 
-        (1) Cam0 & Ca1 camera, Visensor's IMU,  with cameras throttled, see [1];
+        (1) Cam0 & Cam1 camera, Visensor's IMU,  with cameras throttled, see [1].
+            REMEBER TO ADJUST EXPOSERE (agc_enable false, aec_enable false, adjust can)coarse_shutter_width AND TO USE LAMPS!;
+        (2) Cam0 & Cam1 camera, Visensor's IMU (withOUT cameras throttled).
+            REMEBER TO ADJUST EXPOSERE (agc_enable false, aec_enable false, adjust can)coarse_shutter_width AND TO USE LAMPS!;
+        (3) Cam0 & Cam1 camera, Visensor's IMU, Robot's IMU (withOUT cameras throttled).
+            REMEBER TO ADJUST EXPOSERE (agc_enable false, aec_enable false, adjust can)coarse_shutter_width AND TO USE LAMPS!;
 
     b. create symbolic links to these bags in "bags" sub-folder:
         (1) front_cameras_intrinsics.bag
+        (2) front_cameras_extrinsics.bag
+        (3) front_cameras_robot_extrinsics.bag
 
-4. Cameras Calibration (intrinsics). 
+4. Cameras Calibration (intrinsics, see [1]).
    Make sure the whole calibration board is seen @ the beginning
     a. kalibr_calibrate_cameras --target ./parameter_files/april_6x6.yaml --bag ./bags/front_cameras_intrinsics.bag --models pinhole-equi pinhole-equi --topics /cam0/image_raw_throttle /cam1/image_raw_throttle
     b. copy output from current directory to ./out/visensor_cam.yaml
     c. WARNING: **remove in case the 'throttle' string the the rostopic field of the yaml file!**.
 
+5. ViSensor Cameras - ViSensor IMU Calibration (see [2]).
+    a. update parameter_files/imu_adis16448 with IMU topic and frequency.
+    b. rosrun kalibr kalibr_calibrate_imu_camera --cam ./out/visensor_cam.yaml  --target ./parameter_files/april_6x6.yaml --imu ./parameter_files/imu_adis16448.yaml --bag ./bags/front_cameras_extrinsics.bag --time-calibration #use time-calibration to check time difference between camera and imu - IN CASE OF ERROR ADD '--timeoffset-padding 0.1'
+    c. copy output to ./out/visensor_camchainyaml
+    d. copy report to ./out/report/visensor_camchain.pdf
+    e. [optional] if you flipped the cameras, then add "flip_camera: true" after the field "timeshift_cam_imu".
 
+6. Rovio calibration file for Camera0
+    a. rosrun kalibr kalibr_rovio_config --cam ./out/visensor_camchain.yaml
+    b. move rovio_camX to .out/rovio_equidist_camX.yaml
+    c. move rovio_test to ./out/rovio_filter.yaml, compare to a recent rovio file, for example from MAV team to check if some parts are missing, for example VelocityUpdate.
+    d. # in rovio_filter.yaml set doVECalibration to false # leave it to true for now
 
-  [TODO]  d. Use https://github.com/ethz-asl/mav_tools/wiki/ViSensor-Fixing,-Flashing,-Etc. to flash on visensor the new calibration.
+7. ViSensor Cameras and IMU - Robot's IMU Calibration (see [3]).
+    a. update parameter_files/imu_xsens_mti_100.yaml with Robot's IMU topic and frequency.
+    b. rosrun kalibr kalibr_calibrate_imu_camera --cam ./out/visensor_cam.yaml --target ./parameter_files/april_6x6.yaml --imu ./parameter_files/imu_adis16448.yaml ./parameter_files/imu_xsens_mti_100.yaml --imu-models calibrated calibrated --imu-delay-by-correlation --time-calibration  --bag ./bags/front_cameras_robot_extrinsics.bag #use time-calibration to check time difference between camera and imu - IN CASE OF ERROR ADD '--timeoffset-padding 0.1'
+    c. copy output to ./out/visensorimu_robotimu.yaml
+
+8. Adapting URDF model of anymal_visensor: ViSensor IMU position.
+    a. run MATLAB script "anymal_imu_to_visensor_frames.m", before adapt matrix T_I_M to have same values as T_i_b in file from point 7
+    b. copy and past tf_broadcaster node in anymal_bear_description/debug.launch
+    c. get transformation T_visensor_vi_sensor_imu_frame_debug using
+        rosrun arco_ros_utils tf_echo_cpp vi_sensor vi_sensor_imu_frame_debug
+    d. copy translation and RPY (rads) in file anymal_bear_description/urdf/models/vi_sensor_base.urdf.xacro in element 'imu_plugin_macro'
+    e. use anymal_bear_description/debug.launch to double check that frames vi_sensor_imu_frame_debug and vi_sensor/imu now coincides
 

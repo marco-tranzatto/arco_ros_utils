@@ -1,0 +1,24 @@
+<launch>
+  <!-- Parameters -->
+
+  <!-- VISensor -->
+  <node name="visensor_node" pkg="visensor_node" type="visensor_node"/>
+
+  <!-- Throttling -->
+  <node name="topic_throttle_cam_0"
+        pkg="topic_tools" type="throttle"
+        args="messages
+              /cam0/image_raw
+              4">
+    <param name="lazy" value="false"/>
+  </node>
+
+  <node name="topic_throttle_cam_1"
+        pkg="topic_tools" type="throttle"
+        args="messages
+              /cam1/image_raw
+              4">
+    <param name="lazy" value="false"/>
+  </node>
+
+</launch>
