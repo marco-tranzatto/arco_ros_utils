@@ -35,6 +35,21 @@ References:
     c. copy output to ./out/visensor_camchainyaml
     d. copy report to ./out/report/visensor_camchain.pdf
     e. [optional] if you flipped the cameras, then add "flip_camera: true" after the field "timeshift_cam_imu".
+    
+5.5 Upload calibration to ViSensor using combination of following commands
+    a. Get [visensor_tools](https://github.com/skybotix/visensor_tools/tree/develop/visensor_calibration_flasher) on the   `develop` branch.
+
+    ```
+    rosrun visensor_calibration_flasher visensor_calibration_flasher 10.0.0.1 show
+    rosrun visensor_calibration_flasher visensor_calibration_flasher 10.0.0.1 add camchain-imucam-example.yaml 0
+
+    ```
+
+    Delete all old calibrations:
+    ```
+    rosrun visensor_calibration_flasher visensor_calibration_flasher 10.0.0.1 delete -1 0 1 pinhole radial
+    ```
+    b. After you load the calibration, when you launch visensor_node ouy may see "[ERROR] [1533539371.560423847]: No corresponding Factory Calibration found" and "[ERROR] [1533539371.598770809]: No corresponding Factory Calibration for cam left found", but it smees like the camera_info topic is correctely filled and the published TF is correct as well.
 
 6. Rovio calibration file for Camera0
     a. rosrun kalibr kalibr_rovio_config --cam ./out/visensor_camchain.yaml
