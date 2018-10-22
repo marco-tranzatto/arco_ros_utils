@@ -32,7 +32,7 @@ References:
 5. ViSensor Cameras - ViSensor IMU Calibration (see [2]).
     a. update parameter_files/imu_adis16448 with IMU topic and frequency.
     b. rosrun kalibr kalibr_calibrate_imu_camera --cam ./out/visensor_cam.yaml  --target ./parameter_files/april_6x6.yaml --imu ./parameter_files/imu_adis16448.yaml --bag ./bags/front_cameras_extrinsics.bag --time-calibration #use time-calibration to check time difference between camera and imu - IN CASE OF ERROR ADD '--timeoffset-padding 0.1'
-    c. copy output to ./out/visensor_camchainyaml
+    c. copy output to ./out/visensor_camchain.yaml
     d. copy report to ./out/report/visensor_camchain.pdf
     e. [optional] if you flipped the cameras, then add "flip_camera: true" after the field "timeshift_cam_imu".
     
@@ -49,13 +49,27 @@ References:
     ```
     rosrun visensor_calibration_flasher visensor_calibration_flasher 10.0.0.1 delete -1 0 1 pinhole radial
     ```
-    b. After you load the calibration, when you launch visensor_node ouy may see "[ERROR] [1533539371.560423847]: No corresponding Factory Calibration found" and "[ERROR] [1533539371.598770809]: No corresponding Factory Calibration for cam left found", but it smees like the camera_info topic is correctely filled and the published TF is correct as well.
+    b. After you load the calibration, when you launch visensor_node you may see "[ERROR] [1533539371.560423847]: No corresponding Factory Calibration found" and "[ERROR] [1533539371.598770809]: No corresponding Factory Calibration for cam left found", but it seems like the camera_info topic is correctly filled and the published TF is correct as well.
 
 6. Rovio calibration file for Camera0
     a. rosrun kalibr kalibr_rovio_config --cam ./out/visensor_camchain.yaml
     b. move rovio_camX to .out/rovio_equidist_camX.yaml
-    c. move rovio_test to ./out/rovio_filter.yaml, compare to a recent rovio file, for example from MAV team to check if some parts are missing, for example VelocityUpdate.
-    d. # in rovio_filter.yaml set doVECalibration to false # leave it to true for now
+    c. move rovio_test to ./out/rovio_filter.yaml, compare to a recent rovio file, for example from MAV team to check if some parts are missing, for example VelocityUpdate:
+    VelocityUpdate
+    {
+        UpdateNoise
+        {
+            vel_0 0.0001
+            vel_1 0.0001
+            vel_2 0.0001
+        }
+        MahalanobisTh0 7.689997599999999
+        qAM_x 0
+        qAM_y 0
+        qAM_z 0
+        qAM_w 1
+    }
+    d. # in rovio_filter.yaml add section
 
 7. ViSensor Cameras and IMU - Robot's IMU Calibration (see [3]).
     a. update parameter_files/imu_xsens_mti_100.yaml with Robot's IMU topic and frequency.
