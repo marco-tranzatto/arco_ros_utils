@@ -81,6 +81,9 @@ References:
     b. copy and past tf_broadcaster node in anymal_bear_description/debug.launch
     c. get transformation T_visensor_vi_sensor_imu_frame_debug using
         rosrun arco_ros_utils tf_echo_cpp vi_sensor vi_sensor_imu_frame_debug
-    d. copy translation and RPY (rads) in file anymal_bear_description/urdf/models/vi_sensor_base.urdf.xacro in element 'imu_plugin_macro'
+    d. copy translation and RPY (rads) in the urdf file where you include the file "vi_sensor_base.urdf.xacro".
+       <origin_imu>
+        <origin xyz="X Y Z" rpy="R P Y"/>
+      </origin_imu>
     e. use anymal_bear_description/debug.launch to double check that frames vi_sensor_imu_frame_debug and vi_sensor/imu now coincides
 
