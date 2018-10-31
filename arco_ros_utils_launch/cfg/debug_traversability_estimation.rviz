@@ -1,0 +1,404 @@
+Panels:
+  - Class: rviz/Displays
+    Help Height: 0
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Global Options1
+        - /TF1/Frames1
+      Splitter Ratio: 0.5
+    Tree Height: 804
+  - Class: rviz/Selection
+    Name: Selection
+  - Class: rviz/Tool Properties
+    Expanded:
+      - /2D Pose Estimate1
+      - /2D Nav Goal1
+      - /Publish Point1
+    Name: Tool Properties
+    Splitter Ratio: 0.588679016
+  - Class: rviz/Views
+    Expanded:
+      - /Current View1
+    Name: Views
+    Splitter Ratio: 0.5
+  - Class: rviz/Time
+    Experimental: false
+    Name: Time
+    SyncMode: 0
+    SyncSource: PointCloud2
+  - Class: teleop_rviz_plugins/PathCreatorPanel
+    Name: PathCreatorPanel
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.0299999993
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: <Fixed Frame>
+      Value: true
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+        LF_ADAPTER:
+          Value: false
+        LF_FOOT:
+          Value: false
+        LF_HIP:
+          Value: false
+        LF_SHANK:
+          Value: false
+        LF_THIGH:
+          Value: false
+        LH_ADAPTER:
+          Value: false
+        LH_FOOT:
+          Value: false
+        LH_HIP:
+          Value: false
+        LH_SHANK:
+          Value: false
+        LH_THIGH:
+          Value: false
+        RF_ADAPTER:
+          Value: false
+        RF_FOOT:
+          Value: false
+        RF_HIP:
+          Value: false
+        RF_SHANK:
+          Value: false
+        RF_THIGH:
+          Value: false
+        RH_ADAPTER:
+          Value: false
+        RH_FOOT:
+          Value: false
+        RH_HIP:
+          Value: false
+        RH_SHANK:
+          Value: false
+        RH_THIGH:
+          Value: false
+        base:
+          Value: true
+        base_inertia:
+          Value: false
+        feetcenter:
+          Value: false
+        footprint:
+          Value: false
+        ghost_desired/LF_ADAPTER:
+          Value: false
+        ghost_desired/LF_FOOT:
+          Value: false
+        ghost_desired/LF_SHANK:
+          Value: false
+        ghost_desired/LH_ADAPTER:
+          Value: false
+        ghost_desired/LH_FOOT:
+          Value: false
+        ghost_desired/LH_SHANK:
+          Value: false
+        ghost_desired/RF_ADAPTER:
+          Value: false
+        ghost_desired/RF_FOOT:
+          Value: false
+        ghost_desired/RF_SHANK:
+          Value: false
+        ghost_desired/RH_ADAPTER:
+          Value: false
+        ghost_desired/RH_FOOT:
+          Value: false
+        ghost_desired/RH_SHANK:
+          Value: false
+        ghost_desired/base:
+          Value: false
+        ghost_desired/base_inertia:
+          Value: false
+        ghost_desired/handle_mount_front:
+          Value: false
+        ghost_desired/handle_mount_front_sensor_mount_axis_aligned:
+          Value: false
+        ghost_desired/imu_link:
+          Value: false
+        ghost_desired/realsense_d435_camera:
+          Value: false
+        ghost_desired/realsense_d435_camera_axis_aligned:
+          Value: false
+        ghost_desired/realsense_d435_camera_parent:
+          Value: false
+        ghost_desired/realsense_mount:
+          Value: false
+        ghost_desired/realsense_mount_tilted:
+          Value: false
+        ghost_measured/LF_ADAPTER:
+          Value: false
+        ghost_measured/LF_FOOT:
+          Value: false
+        ghost_measured/LF_SHANK:
+          Value: false
+        ghost_measured/LH_ADAPTER:
+          Value: false
+        ghost_measured/LH_FOOT:
+          Value: false
+        ghost_measured/LH_SHANK:
+          Value: false
+        ghost_measured/RF_ADAPTER:
+          Value: false
+        ghost_measured/RF_FOOT:
+          Value: false
+        ghost_measured/RF_SHANK:
+          Value: false
+        ghost_measured/RH_ADAPTER:
+          Value: false
+        ghost_measured/RH_FOOT:
+          Value: false
+        ghost_measured/RH_SHANK:
+          Value: false
+        ghost_measured/base:
+          Value: false
+        ghost_measured/base_inertia:
+          Value: false
+        ghost_measured/handle_mount_front:
+          Value: false
+        ghost_measured/handle_mount_front_sensor_mount_axis_aligned:
+          Value: false
+        ghost_measured/imu_link:
+          Value: false
+        ghost_measured/realsense_d435_camera:
+          Value: false
+        ghost_measured/realsense_d435_camera_axis_aligned:
+          Value: false
+        ghost_measured/realsense_d435_camera_parent:
+          Value: false
+        ghost_measured/realsense_mount:
+          Value: false
+        ghost_measured/realsense_mount_tilted:
+          Value: false
+        handle_mount_front:
+          Value: false
+        handle_mount_front_sensor_mount_axis_aligned:
+          Value: false
+        imu_link:
+          Value: false
+        map:
+          Value: true
+        map_ga:
+          Value: false
+        odom:
+          Value: true
+        realsense_d435_aligned_depth_to_color_frame:
+          Value: false
+        realsense_d435_aligned_depth_to_infra1_frame:
+          Value: false
+        realsense_d435_aligned_depth_to_infra2_frame:
+          Value: false
+        realsense_d435_camera:
+          Value: false
+        realsense_d435_camera_axis_aligned:
+          Value: false
+        realsense_d435_camera_parent:
+          Value: false
+        realsense_d435_color_frame:
+          Value: false
+        realsense_d435_color_optical_frame:
+          Value: false
+        realsense_d435_depth_frame:
+          Value: false
+        realsense_d435_depth_optical_frame:
+          Value: false
+        realsense_d435_infra1_frame:
+          Value: false
+        realsense_d435_infra1_optical_frame:
+          Value: false
+        realsense_d435_infra2_frame:
+          Value: false
+        realsense_d435_infra2_optical_frame:
+          Value: false
+        realsense_mount:
+          Value: false
+        realsense_mount_tilted:
+          Value: false
+      Marker Scale: 3
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        {}
+      Update Interval: 0
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Class: grid_map_rviz_plugin/GridMap
+      Color: 200; 200; 200
+      Color Layer: elevation
+      Color Transformer: GridMapLayer
+      Enabled: false
+      Height Layer: elevation
+      Height Transformer: GridMapLayer
+      History Length: 1
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 10
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: TravEst
+      Show Grid Lines: true
+      Topic: /traversability_estimation/traversability_map
+      Unreliable: false
+      Use Rainbow: true
+      Value: false
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Class: grid_map_rviz_plugin/GridMap
+      Color: 200; 200; 200
+      Color Layer: elevation
+      Color Transformer: GridMapLayer
+      Enabled: false
+      Height Layer: elevation
+      Height Transformer: GridMapLayer
+      History Length: 1
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 10
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: TravPlan
+      Show Grid Lines: true
+      Topic: /traversability_planner/traversability_map
+      Unreliable: false
+      Use Rainbow: true
+      Value: false
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: RGB8
+      Decay Time: 0
+      Enabled: false
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: PointCloud2
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.00999999978
+      Style: Flat Squares
+      Topic: /realsense_d435/depth/color/points
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: false
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Class: grid_map_rviz_plugin/GridMap
+      Color: 200; 200; 200
+      Color Layer: elevation
+      Color Transformer: GridMapLayer
+      Enabled: true
+      Height Layer: elevation
+      Height Transformer: GridMapLayer
+      History Length: 1
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 10
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: Elevation Mapping
+      Show Grid Lines: true
+      Topic: /elevation_mapping/elevation_map
+      Unreliable: false
+      Use Rainbow: true
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 72; 72; 72
+    Default Light: true
+    Fixed Frame: map
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz/Interact
+      Hide Inactive Objects: true
+    - Class: rviz/MoveCamera
+    - Class: rviz/Select
+    - Class: rviz/FocusCamera
+    - Class: rviz/Measure
+    - Class: rviz/SetInitialPose
+      Topic: /initialpose
+    - Class: rviz/SetGoal
+      Topic: /move_base_simple/goal
+    - Class: rviz/PublishPoint
+      Single click: true
+      Topic: /clicked_point
+  Value: true
+  Views:
+    Current:
+      Class: rviz/ThirdPersonFollower
+      Distance: 2.90300179
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.0599999987
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Focal Point:
+        X: -0.632531524
+        Y: -3.59622669
+        Z: 2.02655792e-06
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.0500000007
+      Invert Z Axis: false
+      Name: Current View
+      Near Clip Distance: 0.00999999978
+      Pitch: 0.590202928
+      Target Frame: base
+      Value: ThirdPersonFollower (rviz)
+      Yaw: 4.32614756
+    Saved: ~
+Window Geometry:
+  Displays:
+    collapsed: false
+  Height: 1031
+  Hide Left Dock: false
+  Hide Right Dock: true
+  PathCreatorPanel:
+    collapsed: false
+  QMainWindow State: 000000ff00000000fd00000004000000000000019f00000365fc0200000010fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006700fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000004300000365000000e300fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000c00430061006d00650072006100000002bf0000013d0000000000000000fb0000000c00430061006d00650072006100000002f50000012a0000000000000000fb0000000a0049006d00610067006501000002670000013d0000000000000000fb0000000a0049006d0061006700650100000043000001930000000000000000fb0000000c00430061006d00650072006101000001dc000001c90000000000000000fb0000000c00430061006d00650072006101000002c9000001390000000000000000fb00000020005000610074006800430072006500610074006f007200500061006e0065006c02000002fd000000ca00000250000002bcfb0000000c00430061006d0065007200610100000321000000fe0000000000000000000000010000010f00000365fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000004300000365000000b300fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000007800000003bfc0100000002fb0000000800540069006d00650100000000000007800000022300fffffffb0000000800540069006d00650100000000000004500000000000000000000005db0000036500000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Selection:
+    collapsed: false
+  Time:
+    collapsed: false
+  Tool Properties:
+    collapsed: false
+  Views:
+    collapsed: true
+  Width: 1920
+  X: 0
+  Y: 25
