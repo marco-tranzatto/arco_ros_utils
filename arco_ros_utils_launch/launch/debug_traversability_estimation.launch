@@ -27,9 +27,4 @@
     </rosparam>
   </node>
 
-  <!-- Static transform of the specific realsense D435 used for the data recording,
-       which was not saved in the robot description file -->
-  <node pkg="tf" type="static_transform_publisher" name="velodyne_tf" respawn="true"
-        args="0 0 0 -0.5 0.5 -0.5 0.5 realsense_d435_camera_parent realsense_d435_depth_optical_frame 10"/>
-
 </launch>
