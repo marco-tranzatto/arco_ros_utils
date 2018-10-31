@@ -26,7 +26,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: PointCloud2
+    SyncSource: ""
   - Class: teleop_rviz_plugins/PathCreatorPanel
     Name: PathCreatorPanel
 Visualization Manager:
@@ -241,7 +241,69 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        {}
+        map:
+          odom:
+            base:
+              LF_HIP:
+                LF_THIGH:
+                  LF_SHANK:
+                    LF_ADAPTER:
+                      LF_FOOT:
+                        {}
+              LH_HIP:
+                LH_THIGH:
+                  LH_SHANK:
+                    LH_ADAPTER:
+                      LH_FOOT:
+                        {}
+              RF_HIP:
+                RF_THIGH:
+                  RF_SHANK:
+                    RF_ADAPTER:
+                      RF_FOOT:
+                        {}
+              RH_HIP:
+                RH_THIGH:
+                  RH_SHANK:
+                    RH_ADAPTER:
+                      RH_FOOT:
+                        {}
+              base_inertia:
+                {}
+              handle_mount_front:
+                handle_mount_front_sensor_mount_axis_aligned:
+                  realsense_mount:
+                    realsense_mount_tilted:
+                      realsense_d435_camera_axis_aligned:
+                        realsense_d435_camera:
+                          realsense_d435_camera_parent:
+                            realsense_d435_aligned_depth_to_color_frame:
+                              realsense_d435_color_optical_frame:
+                                {}
+                            realsense_d435_aligned_depth_to_infra1_frame:
+                              realsense_d435_infra1_optical_frame:
+                                {}
+                            realsense_d435_aligned_depth_to_infra2_frame:
+                              realsense_d435_infra2_optical_frame:
+                                {}
+                            realsense_d435_color_frame:
+                              {}
+                            realsense_d435_depth_frame:
+                              {}
+                            realsense_d435_depth_optical_frame:
+                              {}
+                            realsense_d435_infra1_frame:
+                              {}
+                            realsense_d435_infra2_frame:
+                              {}
+              imu_link:
+                {}
+            feetcenter:
+              {}
+            footprint:
+              {}
+            map_ga:
+              {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -304,7 +366,7 @@ Visualization Manager:
       Max Intensity: 4096
       Min Color: 0; 0; 0
       Min Intensity: 0
-      Name: PointCloud2
+      Name: Realsense
       Position Transformer: XYZ
       Queue Size: 10
       Selectable: true
@@ -369,18 +431,18 @@ Visualization Manager:
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.632531524
-        Y: -3.59622669
-        Z: 2.02655792e-06
+        X: -0.00850377977
+        Y: -3.69216776
+        Z: 1.90734863e-06
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.590202928
+      Pitch: 0.610202968
       Target Frame: base
       Value: ThirdPersonFollower (rviz)
-      Yaw: 4.32614756
+      Yaw: 4.48614693
     Saved: ~
 Window Geometry:
   Displays:

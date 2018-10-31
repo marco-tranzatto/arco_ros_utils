@@ -1,8 +1,10 @@
 <launch>
   
-  <arg name="bagfile"             default="/home/marco/bags/debug_traversability_map/2018-10-31-12-14-47.bag"/>
-  <arg name="rviz_config_path"    default="$(find arco_ros_utils_launch)/cfg/debug_traversability_estimation.rviz"/>
-  <param name="/use_sim_time"     value="true"/>
+  <arg name="play_bagfile"          default="true"/>
+  <arg name="remove_map_from_tf"    default="true"/>
+  <arg name="bagfile"               default="/home/marco/bags/debug_traversability_map/2018-10-31-12-14-47.bag"/>
+  <arg name="rviz_config_path"      default="$(find arco_ros_utils_launch)/cfg/debug_traversability_estimation.rviz"/>
+  <param name="/use_sim_time"       value="true"/>
 
   <node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="0 0 2 0 0 0 map odom 100" />
 
@@ -13,6 +15,21 @@
   <include file="$(find anymal_elevation_mapping)/launch/elevation_mapping.launch"/>
 
   <node name="play_rosbag" pkg="rosbag" type="play" output="screen"
-        args="--clock $(arg bagfile) --pause"/>
+        args="--clock $(arg bagfile) --pause" if="$(arg play_bagfile)">
+    <remap from="tf" to="tf_in" if="$(arg remove_map_from_tf)"/>
+  </node>
+
+  <node name="tf_remove_frames" pkg="arco_ros_utils"
+      type="tf_remove_frames.py" if="$(arg remove_map_from_tf)">
+    <remap from="tf_out" to="/tf" />
+    <rosparam param="remove_frames">
+      - map
+    </rosparam>
+  </node>
+
+  <!-- Static transform of the specific realsense D435 used for the data recording,
+       which was not saved in the robot description file -->
+  <node pkg="tf" type="static_transform_publisher" name="velodyne_tf" respawn="true"
+        args="0 0 0 -0.5 0.5 -0.5 0.5 realsense_d435_camera_parent realsense_d435_depth_optical_frame 10"/>
 
 </launch>
