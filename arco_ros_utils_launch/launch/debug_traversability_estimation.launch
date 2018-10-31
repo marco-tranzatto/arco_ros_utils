@@ -1,18 +1,18 @@
 <launch>
   
   <arg name="bagfile"             default="/home/marco/bags/debug_traversability_map/2018-10-31-12-14-47.bag"/>
-  <arg name="rviz_config_path"    default="$(find arco_ros_utils_launch)/launch/cfg/debug_traversability_estimation.rviz"/>
+  <arg name="rviz_config_path"    default="$(find arco_ros_utils_launch)/cfg/debug_traversability_estimation.rviz"/>
   <param name="/use_sim_time"     value="true"/>
 
   <node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="0 0 2 0 0 0 map odom 100" />
 
-  <node name="rviz" pkg="rviz" type="rviz" output="screen" respawn="true"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="--display-config $(arg rviz_config_path)" output="screen" respawn="true"/>
 
   <include file="$(find anymal_traversability_estimation)/launch/traversability_estimation.launch"/>
 
   <include file="$(find anymal_elevation_mapping)/launch/elevation_mapping.launch"/>
 
   <node name="play_rosbag" pkg="rosbag" type="play" output="screen"
-        args="--display-config $(arg rviz_config_path) --clock $(arg bagfile) --pause"/>
+        args="--clock $(arg bagfile) --pause"/>
 
 </launch>
