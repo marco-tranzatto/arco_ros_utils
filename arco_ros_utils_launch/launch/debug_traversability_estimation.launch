@@ -1,12 +1,15 @@
 <launch>
   
-  <arg name="play_bagfile"          default="true"/>
-  <arg name="remove_map_from_tf"    default="true"/>
-  <arg name="bagfile"               default="/home/marco/bags/debug_traversability_map/2018-10-31-12-14-47.bag"/>
-  <arg name="rviz_config_path"      default="$(find arco_ros_utils_launch)/cfg/debug_traversability_estimation.rviz"/>
-  <param name="/use_sim_time"       value="true"/>
+  <arg name="play_bagfile"                      default="true"/>
+  <arg name="remove_map_from_tf"                default="false"/>
+  <arg name="publish_base_realsense_depth_tf"   default="true"/>
+  <arg name="publish_base_pose_in_odom"         default="true"/>
+  <arg name="bagfile"                           default="/home/marco/bags/debug_traversability_map/2018-11-06-11-35-05-realsense-and-tf.bag"/>
+  <arg name="rviz_config_path"                  default="$(find arco_ros_utils_launch)/cfg/debug_traversability_estimation.rviz"/>
+  <param name="/use_sim_time"                   value="true"/>
 
-  <node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="0 0 2 0 0 0 map odom 100" />
+  <node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="0 0 2 0 0 0 map odom 100"
+        if="$(arg remove_map_from_tf)"/>
 
   <node name="rviz" pkg="rviz" type="rviz" args="--display-config $(arg rviz_config_path)" output="screen" respawn="true"/>
 
@@ -26,5 +29,16 @@
       - map
     </rosparam>
   </node>
+
+  <!-- Static transform of the specific realsense D435 used for the data recording,
+       which was not saved in the recorded bag because the frame chains was published once in the /tf_static topic,
+       way before you started the rosbag record -->
+  <node pkg="tf" type="static_transform_publisher" name="realsense_tf" respawn="true"
+        args="0.371734 0.014963 0.129707 0.634514 -0.632415 0.314720 -0.313679 base realsense_d435_depth_optical_frame 10"
+        if="$(arg publish_base_realsense_depth_tf)"/>
+
+  <node pkg="rostopic" type="rostopic" name="fake_pose_in_odom"
+        args="pub /state_estimator/pose_in_odom geometry_msgs/PoseWithCovarianceStamped --latch --file=$(find arco_ros_utils_launch)/cfg/debug_traversability_estimation.pose_in_odom"
+        output="screen" if="$(arg publish_base_pose_in_odom)"/>
 
 </launch>
