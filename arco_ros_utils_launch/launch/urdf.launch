@@ -1,0 +1,13 @@
+<launch>
+  <!-- textfile containing the robot's urdf model -->
+  <param name="robot_description" textfile="/home/kh/git/slam_rsl/slam_rsl_cartographer/config/shepherds_crook/shepherds_crook.urdf" />
+
+  <!-- joint state publisher -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <!-- robot state publisher -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+  <!-- visualization -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d /home/kh/git/arco_ros_utils/arco_ros_utils_launch/cfg/urdf.rviz" required="true"/>
+
+</launch>
+
