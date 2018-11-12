@@ -5,7 +5,6 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
-        - /TF1/Frames1
       Splitter Ratio: 0.5
     Tree Height: 804
   - Class: rviz/Selection
@@ -26,7 +25,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: Realsense
   - Class: teleop_rviz_plugins/PathCreatorPanel
     Name: PathCreatorPanel
 Visualization Manager:
@@ -147,6 +146,12 @@ Visualization Manager:
           Value: false
         ghost_desired/realsense_mount_tilted:
           Value: false
+        ghost_desired/velodyne:
+          Value: false
+        ghost_desired/velodyne_axis_aligned:
+          Value: false
+        ghost_desired/velodyne_mount:
+          Value: false
         ghost_measured/LF_ADAPTER:
           Value: false
         ghost_measured/LF_FOOT:
@@ -191,6 +196,12 @@ Visualization Manager:
           Value: false
         ghost_measured/realsense_mount_tilted:
           Value: false
+        ghost_measured/velodyne:
+          Value: false
+        ghost_measured/velodyne_axis_aligned:
+          Value: false
+        ghost_measured/velodyne_mount:
+          Value: false
         handle_mount_front:
           Value: false
         handle_mount_front_sensor_mount_axis_aligned:
@@ -198,8 +209,6 @@ Visualization Manager:
         imu_link:
           Value: false
         map:
-          Value: true
-        map_ga:
           Value: false
         odom:
           Value: true
@@ -235,85 +244,94 @@ Visualization Manager:
           Value: false
         realsense_mount_tilted:
           Value: false
+        velodyne:
+          Value: false
+        velodyne_axis_aligned:
+          Value: false
+        velodyne_mount:
+          Value: false
       Marker Scale: 3
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        map:
-          odom:
-            base:
-              LF_HIP:
-                LF_THIGH:
-                  LF_SHANK:
-                    LF_ADAPTER:
-                      LF_FOOT:
-                        {}
-              LH_HIP:
-                LH_THIGH:
-                  LH_SHANK:
-                    LH_ADAPTER:
-                      LH_FOOT:
-                        {}
-              RF_HIP:
-                RF_THIGH:
-                  RF_SHANK:
-                    RF_ADAPTER:
-                      RF_FOOT:
-                        {}
-              RH_HIP:
-                RH_THIGH:
-                  RH_SHANK:
-                    RH_ADAPTER:
-                      RH_FOOT:
-                        {}
-              base_inertia:
-                {}
-              handle_mount_front:
-                handle_mount_front_sensor_mount_axis_aligned:
-                  realsense_mount:
-                    realsense_mount_tilted:
-                      realsense_d435_camera_axis_aligned:
-                        realsense_d435_camera:
-                          realsense_d435_camera_parent:
-                            realsense_d435_aligned_depth_to_color_frame:
-                              realsense_d435_color_optical_frame:
-                                {}
-                            realsense_d435_aligned_depth_to_infra1_frame:
-                              realsense_d435_infra1_optical_frame:
-                                {}
-                            realsense_d435_aligned_depth_to_infra2_frame:
-                              realsense_d435_infra2_optical_frame:
-                                {}
-                            realsense_d435_color_frame:
-                              {}
-                            realsense_d435_depth_frame:
-                              {}
-                            realsense_d435_depth_optical_frame:
-                              {}
-                            realsense_d435_infra1_frame:
-                              {}
-                            realsense_d435_infra2_frame:
-                              {}
-              imu_link:
-                {}
-            feetcenter:
+        odom:
+          base:
+            LF_HIP:
+              LF_THIGH:
+                LF_SHANK:
+                  LF_ADAPTER:
+                    LF_FOOT:
+                      {}
+            LH_HIP:
+              LH_THIGH:
+                LH_SHANK:
+                  LH_ADAPTER:
+                    LH_FOOT:
+                      {}
+            RF_HIP:
+              RF_THIGH:
+                RF_SHANK:
+                  RF_ADAPTER:
+                    RF_FOOT:
+                      {}
+            RH_HIP:
+              RH_THIGH:
+                RH_SHANK:
+                  RH_ADAPTER:
+                    RH_FOOT:
+                      {}
+            base_inertia:
               {}
-            footprint:
+            handle_mount_front:
+              handle_mount_front_sensor_mount_axis_aligned:
+                realsense_mount:
+                  realsense_mount_tilted:
+                    realsense_d435_camera_axis_aligned:
+                      realsense_d435_camera:
+                        realsense_d435_camera_parent:
+                          realsense_d435_aligned_depth_to_color_frame:
+                            realsense_d435_color_optical_frame:
+                              {}
+                          realsense_d435_aligned_depth_to_infra1_frame:
+                            realsense_d435_infra1_optical_frame:
+                              {}
+                          realsense_d435_aligned_depth_to_infra2_frame:
+                            realsense_d435_infra2_optical_frame:
+                              {}
+                          realsense_d435_color_frame:
+                            {}
+                          realsense_d435_depth_frame:
+                            {}
+                          realsense_d435_infra1_frame:
+                            {}
+                          realsense_d435_infra2_frame:
+                            {}
+            imu_link:
               {}
-            map_ga:
+            realsense_d435_depth_optical_frame:
               {}
+            velodyne_mount:
+              velodyne_axis_aligned:
+                velodyne:
+                  {}
+          feetcenter:
+            {}
+          footprint:
+            {}
+          map:
+            {}
       Update Interval: 0
       Value: true
-    - Alpha: 1
+    - Alpha: 0.200000003
       Autocompute Intensity Bounds: true
       Class: grid_map_rviz_plugin/GridMap
       Color: 200; 200; 200
-      Color Layer: elevation
+      Color Layer: traversability
       Color Transformer: GridMapLayer
-      Enabled: false
-      Height Layer: elevation
+      Enabled: true
+      Height Layer: traversability
       Height Transformer: GridMapLayer
       History Length: 1
       Invert Rainbow: false
@@ -326,15 +344,15 @@ Visualization Manager:
       Topic: /traversability_estimation/traversability_map
       Unreliable: false
       Use Rainbow: true
-      Value: false
+      Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Class: grid_map_rviz_plugin/GridMap
       Color: 200; 200; 200
-      Color Layer: elevation
+      Color Layer: traversability
       Color Transformer: GridMapLayer
-      Enabled: false
-      Height Layer: elevation
+      Enabled: true
+      Height Layer: traversability
       Height Transformer: GridMapLayer
       History Length: 1
       Invert Rainbow: false
@@ -347,7 +365,7 @@ Visualization Manager:
       Topic: /traversability_planner/traversability_map
       Unreliable: false
       Use Rainbow: true
-      Value: false
+      Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
@@ -360,7 +378,7 @@ Visualization Manager:
       Color: 255; 255; 255
       Color Transformer: RGB8
       Decay Time: 0
-      Enabled: false
+      Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
       Max Intensity: 4096
@@ -377,7 +395,7 @@ Visualization Manager:
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
-      Value: false
+      Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Class: grid_map_rviz_plugin/GridMap
@@ -423,26 +441,26 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Class: rviz/ThirdPersonFollower
-      Distance: 2.90300179
+      Class: rviz/Orbit
+      Distance: 6.03115654
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.00850377977
-        Y: -3.69216776
-        Z: 1.90734863e-06
+        X: 1.07822537
+        Y: 0.0938778296
+        Z: -0.914016843
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.610202968
+      Pitch: 0.399796009
       Target Frame: base
-      Value: ThirdPersonFollower (rviz)
-      Yaw: 4.48614693
+      Value: Orbit (rviz)
+      Yaw: 0.551139057
     Saved: ~
 Window Geometry:
   Displays:
