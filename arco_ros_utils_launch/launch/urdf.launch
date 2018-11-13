@@ -7,7 +7,7 @@
   <!-- robot state publisher -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
   <!-- visualization -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d /home/kh/git/arco_ros_utils/arco_ros_utils_launch/cfg/urdf.rviz" required="true"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find arco_ros_utils_launch)/cfg/urdf.rviz" respawn="true"/>
 
 </launch>
 
