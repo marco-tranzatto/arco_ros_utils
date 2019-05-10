@@ -1,0 +1,10 @@
+<launch>
+  <!-- sudo apt install ros-melodic-roscpp-tutorials -->
+  <arg name="node_name"  default="chatter"/>
+  <arg name="topic_name"  default="chatter"/>
+
+  <node name="$(arg node_name)" pkg="roscpp_tutorials" type="talker">
+    <remap from="chatter" to="$(arg topic_name)"/>
+  </node>
+
+</launch>

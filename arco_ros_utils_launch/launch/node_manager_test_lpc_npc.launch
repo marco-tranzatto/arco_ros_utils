@@ -1,0 +1,27 @@
+<launch>
+
+  <!-- ========= LPC ========= -->
+  <include file="$(find arco_ros_utils_launch)/launch/roscpp_tutorials_talker.launch">
+    <arg name="node_name"   value="talker_lpc_1"/>
+    <arg name="topic_name"  value="talker_lpc_1"/>
+  </include>
+
+  <include file="$(find arco_ros_utils_launch)/launch/roscpp_tutorials_talker.launch">
+    <arg name="node_name"   value="talker_lpc_2"/>
+    <arg name="topic_name"  value="talker_lpc_2"/>
+  </include>
+
+  <!-- ========= NPC ========= -->
+  <machine name="anymal_bear_npc" address="anymal-bear-npc" user="integration" default="true"/>
+
+  <include file="$(find arco_ros_utils_launch)/launch/roscpp_tutorials_talker.launch">
+    <arg name="node_name"   value="talker_npc_1"/>
+    <arg name="topic_name"  value="talker_npc_1"/>
+  </include>
+
+  <include file="$(find arco_ros_utils_launch)/launch/roscpp_tutorials_talker.launch">
+    <arg name="node_name"   value="talker_npc_2"/>
+    <arg name="topic_name"  value="talker_npc_2"/>
+  </include>
+
+</launch>
