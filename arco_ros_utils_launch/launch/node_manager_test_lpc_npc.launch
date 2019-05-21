@@ -1,6 +1,7 @@
 <launch>
 
   <!-- ========= LPC ========= -->
+  <!--machine name="rsl-git-mirror" address="rsl-git-mirror" user="integration" default="true" env-loader="/home/integration/test_ros_machine_tag.sh"/-->
   <include file="$(find arco_ros_utils_launch)/launch/roscpp_tutorials_talker.launch">
     <arg name="node_name"   value="talker_lpc_1"/>
     <arg name="topic_name"  value="talker_lpc_1"/>
@@ -12,16 +13,16 @@
   </include>
 
   <!-- ========= NPC ========= -->
-  <machine name="anymal_bear_npc" address="anymal-bear-npc" user="integration" default="true"/>
+  <machine name="anymal-bear-tpc" address="anymal-bear-tpc" user="integration" default="true" env-loader="/home/integration/test_ros_machine_tag.sh"/>
 
   <include file="$(find arco_ros_utils_launch)/launch/roscpp_tutorials_talker.launch">
-    <arg name="node_name"   value="talker_npc_1"/>
-    <arg name="topic_name"  value="talker_npc_1"/>
+    <arg name="node_name"   value="talker_tpc_1"/>
+    <arg name="topic_name"  value="talker_tpc_1"/>
   </include>
 
   <include file="$(find arco_ros_utils_launch)/launch/roscpp_tutorials_talker.launch">
-    <arg name="node_name"   value="talker_npc_2"/>
-    <arg name="topic_name"  value="talker_npc_2"/>
+    <arg name="node_name"   value="talker_tpc_2"/>
+    <arg name="topic_name"  value="talker_tpc_2"/>
   </include>
 
 </launch>
