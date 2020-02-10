@@ -2,7 +2,7 @@
 
 #Configure ROS Network with a master running on a remote computer
 echo "Usage : source $0 <MASTER_IP>"
-wifi_interface_name="wlp4s0"
+wifi_interface_name="wlp3s0"
 #get WIFI IP address of this machine
 wifiip=$(ip addr | awk '/inet/ && /'${wifi_interface_name}'/{sub(/\/.*$/,"",$2); print $2}')
 export ROS_IP=$wifiip
