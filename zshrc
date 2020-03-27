@@ -68,7 +68,7 @@ ZSH_THEME="af-magic"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git dirhistory)
+plugins=(git dirhistory fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -119,3 +119,4 @@ source ~/catkin_ws/devel/setup.zsh
 
 # brahma
 source ~/.bash_completion
+
