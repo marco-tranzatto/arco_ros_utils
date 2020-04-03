@@ -1,0 +1,43 @@
+# debugging
+alias arp_scan_eth='sudo arp-scan --interface=enp0s31f6 --localnet'
+alias arp_scan_wifi='sudo arp-scan --interface=wlp3s0 --localnet'
+
+alias dhcp_srv_start='sudo service isc-dhcp-server start'
+alias dhcp_srv_restart='sudo service isc-dhcp-server restart'
+alias dhcp_srv_stop='sudo service isc-dhcp-server stop'
+
+# ROS
+alias bcd="brahma_catkin build"
+alias cb='catkin build'
+alias configure_ros_network='source /home/marcot/git/arco_ros_utils/arco_ros_utils_bash/configure_ros_network.sh'
+alias rsl-git-mirror='ssh -x git@rsl-git-mirror -X'
+
+# DARPA SubT Challenge
+alias reporting='terminator -l reporting && exit'
+alias bear='terminator -l bear && exit'
+alias mission='terminator -l mission && exit'
+alias governor='watch -n1 cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor'
+alias wiki='cat /home/marcot/git/darpa_subt_common/darpa_subt_mission_wiki/README.md'
+
+# ANYmal Bs
+alias integration_bear_lpc='ssh integration@anymal-bear-lpc -Y'
+alias integration_bear_npc='ssh integration@anymal-bear-npc -Y'
+alias integration_bear_apc='ssh integration@anymal-bear-apc -Y'
+alias integration_bear_opc='ssh integration@anymal-bear-opc -Y'
+
+alias integration_badger_lpc='ssh integration@anymal-badger-lpc -Y'
+alias integration_badger_npc='ssh integration@anymal-badger-npc -Y'
+alias integration_badger_apc='ssh integration@anymal-badger-apc -Y'
+alias integration_badger_opc='ssh integration@anymal-badger-opc -Y'
+
+alias cerberus_bear_lpc='ssh cerberus@anymal-bear-lpc -Y'
+alias cerberus_bear_npc='ssh cerberus@anymal-bear-npc -Y'
+alias cerberus_bear_apc='ssh cerberus@anymal-bear-apc -Y'
+alias cerberus_bear_opc='ssh cerberus@anymal-bear-opc -Y'
+alias cerberus_bear_jetson='ssh cerberus@anymal-bear-jetson -Y'
+
+alias cerberus_badger_lpc='ssh cerberus@anymal-badger-lpc -Y'
+alias cerberus_badger_npc='ssh cerberus@anymal-badger-npc -Y'
+alias cerberus_badger_apc='ssh cerberus@anymal-badger-apc -Y'
+alias cerberus_badger_opc='ssh cerberus@anymal-badger-opc -Y'
+alias cerberus_badger_jetson='ssh cerberus@anymal-badger-jetson -Y'
