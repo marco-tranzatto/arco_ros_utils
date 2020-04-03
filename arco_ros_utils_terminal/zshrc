@@ -68,7 +68,11 @@ CASE_SENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git dirhistory fzf)
+plugins=(git fzf ubuntu sudo)
+
+# fzf: press ctrl+r to access history
+# sudo: press 'esc' 2 times to pre-append sudo to current command
+# to navigate up X folders type '..' for 2 folders, '...' for 3, etc
 
 source $ZSH/oh-my-zsh.sh
 
