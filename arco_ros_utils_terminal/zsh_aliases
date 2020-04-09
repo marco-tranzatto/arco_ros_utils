@@ -6,6 +6,21 @@ alias dhcp_srv_start='sudo service isc-dhcp-server start'
 alias dhcp_srv_restart='sudo service isc-dhcp-server restart'
 alias dhcp_srv_stop='sudo service isc-dhcp-server stop'
 
+for_all_subdirs(){
+    for dir in *; do
+        if [ -d "$dir" ]; then
+            echo $dir
+            cd "$dir"
+           "$@"
+           cd ..
+        fi
+    done
+}
+
+
+# GIT
+alias git_remove_merged_branches="git branch --merged master | grep -v '^[ *]*master$' | xargs git branch -d"
+
 # ROS
 alias bcd="brahma_catkin build"
 alias cb='catkin build'
