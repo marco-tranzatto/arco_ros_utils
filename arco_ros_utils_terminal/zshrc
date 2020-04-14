@@ -123,5 +123,7 @@ fi
 source ~/catkin_ws/devel/setup.zsh
 
 # brahma
-source ~/.bash_completion
+autoload bashcompinit
+bashcompinit
+source ~/.local/etc/bash_completion.d
 
