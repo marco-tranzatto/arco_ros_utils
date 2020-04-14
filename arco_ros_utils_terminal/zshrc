@@ -125,5 +125,5 @@ source ~/catkin_ws/devel/setup.zsh
 # brahma
 autoload bashcompinit
 bashcompinit
-source ~/.local/etc/bash_completion.d
+source ~/.bash_completion
 
