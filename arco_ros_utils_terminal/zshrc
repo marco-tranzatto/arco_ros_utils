@@ -120,10 +120,13 @@ fi
 # To have separete history between different terminals see https://superuser.com/a/1017151
 
 # catkin ws
-source ~/catkin_ws/devel/setup.zsh
+#source ~/catkin_ws/devel/setup.zsh
 
 # brahma
 autoload bashcompinit
 bashcompinit
 source ~/.bash_completion
 
+# source brahma workspace currently in use
+export BRAHMA_WS="/home/marcot/local_guidance_ws"
+source ${BRAHMA_WS}/catkin_ws/devel/setup.zsh

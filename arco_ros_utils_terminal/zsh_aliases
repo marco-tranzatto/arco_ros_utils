@@ -22,7 +22,8 @@ for_all_subdirs(){
 alias git_remove_merged_branches="git branch --merged master | grep -v '^[ *]*master$' | xargs git branch -d"
 
 # ROS
-alias bcd="brahma_catkin build"
+alias bcb="brahma_catkin build"
+alias bs='brahma_source'
 alias cb='catkin build'
 alias configure_ros_network='source /home/marcot/git/arco_ros_utils/arco_ros_utils_bash/configure_ros_network.sh'
 alias rsl-git-mirror='ssh -x git@rsl-git-mirror -X'
