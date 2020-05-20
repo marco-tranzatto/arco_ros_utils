@@ -1,0 +1,3 @@
+Manage table with markdown: https://stevecat.net/table-magic/#
+
+Clion highlight selected text: https://plugins.jetbrains.com/plugin/201-browsewordatcaret
