@@ -27,6 +27,8 @@ alias bs='brahma_source'
 alias cb='catkin build'
 alias configure_ros_network='source /home/marcot/git/arco_ros_utils/arco_ros_utils_bash/configure_ros_network.sh'
 alias rsl-git-mirror='ssh -x git@rsl-git-mirror -X'
+alias rpg='rosparam get'
+alias rplg='rosparam list | grep'
 
 # DARPA SubT Challenge
 alias reporting='terminator -l reporting && exit'
@@ -34,6 +36,9 @@ alias bear='terminator -l bear && exit'
 alias mission='terminator -l mission && exit'
 alias governor='watch -n1 cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor'
 alias wiki='cat /home/marcot/git/darpa_subt_common/darpa_subt_mission_wiki/README.md'
+
+# Varia
+alias weather="curl http://wttr.in/Zurich"
 
 # ANYmal Bs
 alias integration_bear_lpc='ssh integration@anymal-bear-lpc -Y'
