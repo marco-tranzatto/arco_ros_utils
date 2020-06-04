@@ -62,3 +62,23 @@ alias cerberus_badger_npc='ssh cerberus@anymal-badger-npc -Y'
 alias cerberus_badger_apc='ssh cerberus@anymal-badger-apc -Y'
 alias cerberus_badger_opc='ssh cerberus@anymal-badger-opc -Y'
 alias cerberus_badger_jetson='ssh cerberus@anymal-badger-jetson -Y'
+
+alias integration_croc_lpc='ssh integration@anymal-croc-lpc -Y'
+alias integration_croc_npc='ssh integration@anymal-croc-npc -Y'
+alias integration_croc_apc='ssh integration@anymal-croc-apc -Y'
+alias integration_croc_opc='ssh integration@anymal-croc-opc -Y'
+
+alias integration_cerberus_lpc='ssh integration@anymal-cerberus-lpc -Y'
+alias integration_cerberus_npc='ssh integration@anymal-cerberus-npc -Y'
+alias integration_cerberus_apc='ssh integration@anymal-cerberus-apc -Y'
+alias integration_cerberus_opc='ssh integration@anymal-cerberus-opc -Y'
+
+alias subt_cerberus_lpc='ssh subt@anymal-cerberus-lpc -Y'
+alias subt_cerberus_npc='ssh subt@anymal-cerberus-npc -Y'
+alias subt_cerberus_apc='ssh subt@anymal-cerberus-apc -Y'
+alias subt_cerberus_opc='ssh subt@anymal-cerberus-opc -Y'
+
+alias marcot_cerberus_lpc='ssh marcot@anymal-cerberus-lpc -Y'
+alias marcot_cerberus_npc='ssh marcot@anymal-cerberus-npc -Y'
+alias marcot_cerberus_apc='ssh marcot@anymal-cerberus-apc -Y'
+alias marcot_cerberus_opc='ssh marcot@anymal-cerberus-opc -Y'
