@@ -131,13 +131,17 @@ fi
 #source ~/catkin_ws/devel/setup.zsh
 
 # brahma
-autoload bashcompinit
-bashcompinit
-source ~/.bash_completion
+if [ -f ~/.bash_completion ]; then
+    autoload bashcompinit
+    bashcompinit
+    source ~/.bash_completion
+fi
 
 # source brahma workspace currently in use
 export BRAHMA_WS="/home/marcot/subt_ws"
-source ${BRAHMA_WS}/catkin_ws/devel/setup.zsh
+if [ -f ${BRAHMA_WS}/catkin_ws/devel/setup.zsh ]; then
+    source ${BRAHMA_WS}/catkin_ws/devel/setup.zsh
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
