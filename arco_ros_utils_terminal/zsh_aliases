@@ -20,6 +20,7 @@ for_all_subdirs(){
 
 # GIT
 alias git_remove_merged_branches="git branch --merged master | grep -v '^[ *]*master$' | xargs git branch -d"
+alias git_lb="git for-each-ref --sort=committerdate refs/heads/ --format='%(color: red)%(committerdate:short) %(color: cyan)%(refname:short)'"
 
 # ROS
 alias bcb="brahma_catkin build"
@@ -100,3 +101,20 @@ alias marcot_chimera_lpc='ssh marcot@anymal-chimera-lpc -Y'
 alias marcot_chimera_npc='ssh marcot@anymal-chimera-npc -Y'
 alias marcot_chimera_jetson='ssh marcot@anymal-chimera-jetson -Y'
 alias marcot_chimera_opc='ssh marcot@anymal-chimera-opc -Y'
+
+# Kraken
+alias subt_kraken='ssh subt@192.168.0.25 -Y'
+
+# Mission control logging
+# terminator layout
+alias mission_layout='terminator -l mission_layout && exit'
+
+# tmux logging
+#alias start_logging_tmux='bash ~/git/tmux-logging/scripts/start_logging.sh ~/mission_log/mission_control_cerberus_tmux_`date +"%Y_%m_%d_%H_%M_%S".txt`'
+alias start_logging_tmux='bash ~/git/tmux-logging/scripts/start_logging.sh ~/mission_log/`date +"%Y_%m_%d_%H_%M_%S"`_mission_control_tmux.txt'
+
+alias start_mission_control_cerberus='start_logging_tmux && roslaunch anymal_cerberus_subt mission_control.launch'
+alias start_rosbag_recording_cerberus="ssh subt@anymal-cerberus-lpc -t 'source ~/catkin_ws/devel/setup.bash; rosservice call /rosbag_record_robot_coordinator/record_bag {}'"
+alias stop_rosbag_recording_cerberus="ssh subt@anymal-cerberus-lpc -t 'source ~/catkin_ws/devel/setup.bash; rosservice call /rosbag_record_robot_coordinator/stop_bag {}'"
+alias start_rosbag_recording_chimera="ssh subt@anymal-chimera-lpc -t 'source ~/catkin_ws/devel/setup.bash; rosservice call /rosbag_record_robot_coordinator/record_bag {}'"
+alias stop_rosbag_recording_chimera="ssh subt@anymal-chimera-lpc -t 'source ~/catkin_ws/devel/setup.bash; rosservice call /rosbag_record_robot_coordinator/stop_bag {}'"

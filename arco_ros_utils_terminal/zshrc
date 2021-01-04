@@ -138,6 +138,7 @@ if [ -f ~/.bash_completion ]; then
 fi
 
 # source brahma workspace currently in use
+[[ ":$PATH:" != *":/home/$USER/.local/bin:"* ]] && PATH="/home/$USER/.local/bin:${PATH}"
 export BRAHMA_WS="/home/marcot/subt_ws"
 if [ -f ${BRAHMA_WS}/catkin_ws/devel/setup.zsh ]; then
     source ${BRAHMA_WS}/catkin_ws/devel/setup.zsh
