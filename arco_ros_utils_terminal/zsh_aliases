@@ -24,7 +24,7 @@ alias git_lb="git for-each-ref --sort=committerdate refs/heads/ --format='%(colo
 
 # ROS
 alias bcb="brahma_catkin build"
-alias bs='brahma_source'
+alias bs='source /home/marcot/subt_ws/catkin_ws/devel/setup.zsh' # hack for subtws!
 alias cb='catkin build'
 alias configure_ros_network_eth='source /home/marcot/git/arco_ros_utils/arco_ros_utils_terminal/configure_ros_network_eth.sh'
 alias configure_ros_network_wifi='source /home/marcot/git/arco_ros_utils/arco_ros_utils_terminal/configure_ros_network_wifi.sh'
