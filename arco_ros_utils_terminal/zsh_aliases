@@ -102,6 +102,26 @@ alias marcot_chimera_npc='ssh marcot@anymal-chimera-npc -Y'
 alias marcot_chimera_jetson='ssh marcot@anymal-chimera-jetson -Y'
 alias marcot_chimera_opc='ssh marcot@anymal-chimera-opc -Y'
 
+# ANYmal Caiman
+alias integration_caiman_lpc='ssh integration@anymal-caiman-lpc -Y'
+alias integration_caiman_npc='ssh integration@anymal-caiman-npc -Y'
+alias integration_caiman_apc='ssh integration@anymal-caiman-apc -Y'
+
+alias subt_caiman_lpc='ssh subt@anymal-caiman-lpc -Y'
+alias subt_caiman_npc='ssh subt@anymal-caiman-npc -Y'
+alias subt_caiman_apc='ssh subt@anymal-caiman-apc -Y'
+alias subt_caiman_jetson='ssh subt@anymal-caiman-jetson -Y'
+
+# ANYmal Camel
+alias integration_camel_lpc='ssh integration@anymal-camel-lpc -Y'
+alias integration_camel_npc='ssh integration@anymal-camel-npc -Y'
+alias integration_camel_apc='ssh integration@anymal-camel-apc -Y'
+
+alias subt_camel_lpc='ssh subt@anymal-camel-lpc -Y'
+alias subt_camel_npc='ssh subt@anymal-camel-npc -Y'
+alias subt_camel_apc='ssh subt@anymal-camel-apc -Y'
+alias subt_camel_jetson='ssh subt@anymal-camel-jetson -Y'
+
 # Kraken
 alias subt_kraken='ssh subt@192.168.0.25 -Y'
 
@@ -118,3 +138,4 @@ alias start_rosbag_recording_cerberus="ssh subt@anymal-cerberus-lpc -t 'source ~
 alias stop_rosbag_recording_cerberus="ssh subt@anymal-cerberus-lpc -t 'source ~/catkin_ws/devel/setup.bash; rosservice call /rosbag_record_robot_coordinator/stop_bag {}'"
 alias start_rosbag_recording_chimera="ssh subt@anymal-chimera-lpc -t 'source ~/catkin_ws/devel/setup.bash; rosservice call /rosbag_record_robot_coordinator/record_bag {}'"
 alias stop_rosbag_recording_chimera="ssh subt@anymal-chimera-lpc -t 'source ~/catkin_ws/devel/setup.bash; rosservice call /rosbag_record_robot_coordinator/stop_bag {}'"
+alias start_mission_control_center='start_logging_tmux && roslaunch anymal_subt_control_center mission_control_center.launch'
